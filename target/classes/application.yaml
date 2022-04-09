@@ -1,0 +1,16 @@
+
+#?????????
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    username: user1
+    password:
+    url: jdbc:mysql://101.43.193.226:3306/env?serverTimezone=UTC&userUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+server:
+  port: 8081
+
+mybatis:
+  type-aliases-package: com.example.demo.pojo
+  mapper-locations: classpath:mapper/*xml
