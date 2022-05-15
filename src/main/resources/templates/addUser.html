@@ -42,34 +42,29 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <form th:action="@{/addWorker}" method="post">
+                    <form th:action="@{/addUser}" method="post">
+
+<!--                    <div class="form-group">-->
+<!--                        <label for="ID">ID</label>-->
+<!--                        <input type="text" class="form-control" id="ID" name="id">-->
+<!--                    </div>-->
 
                     <div class="form-group">
-                        <label for="ID">ID</label>
-                        <input type="text" class="form-control" id="ID" name="id">
+                        <label for="userName">用户名</label>
+                        <input type="text" class="form-control" id="userName" name="name">
                     </div>
 
                     <div class="form-group">
-                        <label for="date">注册时间</label>
-                        <input type="date" class="form-control" id="date" name="date">
-                        <small id="regHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
+                        <label for="psw">密码</label>
+                        <input type="text" class="form-control" id="psw" name="psw">
                     </div>
 
-                    <div class="form-group">
-                        <label for="status">设备状态</label>
-                        <select class="form-control" id="status" name="status">
-                            <option>正常</option>
-                            <option>故障</option>
-                        </select>
-                    </div>
 
                     <div class="form-group">
-                        <label for="location">所在区域</label>
-                        <select class="form-control" id="location" name="location">
-                            <option>东南林区</option>
-                            <option>西南林区</option>
-                            <option>东北林区</option>
-                            <option>西北林区</option>
+                        <label for="privilege">用户权限</label>
+                        <select class="form-control" id="privilege" name="privilege">
+                            <option>普通用户</option>
+                            <option>管理员</option>
                         </select>
                     </div>
 

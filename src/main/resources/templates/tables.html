@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>设备表</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -44,7 +44,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                    <h1 class="h3 mb-2 text-gray-800">设备表</h1>
                     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>
@@ -74,7 +74,7 @@
                                     <tbody>
                                         <tr th:each="worker:${workers}">
                                             <td th:text="${worker.getId()}"></td>
-                                            <td th:text="${#dates.format(worker.getData(), 'yyyy-MM-dd')}"></td>
+                                            <td th:text="${#dates.format(worker.getDate(), 'yyyy-MM-dd')}"></td>
                                             <td th:text="${worker.getStatus()}"></td>
                                             <td th:text="${worker.getBattery()}"></td>
                                             <td th:text="${worker.getLocation()}"></td>
@@ -82,8 +82,8 @@
 
 
                                                 <button class="btn btn-sm btn-primary">编辑</button>
-                                                <button class="btn btn-sm btn-danger">删除</button>
-                                                <a class="btn btn-info" th:href="@{/queryImpList}">详情</a>
+                                                <a class="btn btn-sm btn-danger" th:href="@{/deleteWorker/}+${worker.getId()}">删除</a>
+                                                <a class="btn btn-sm btn-info" th:href="@{/queryImpList}">详情</a>
 <!--                                                <button type="button" class="btn btn-info"></button>-->
                                             </td>
                                         </tr>
@@ -131,6 +131,18 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print'
+                ]
+            } );
+        } );
+    </script>
 
 </body>
 

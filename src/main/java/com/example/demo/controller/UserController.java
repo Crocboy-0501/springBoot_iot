@@ -4,13 +4,11 @@ import com.example.demo.mapper.UserMapper;
 import com.example.demo.pojo.User;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.pojo.User;
+import com.example.demo.pojo.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,28 +21,35 @@ public class UserController {
     public String queryUserList(Model model){
         List<User> userList = userMapper.queryUserList();
         model.addAttribute("emps", userList);
-        return "tables";
+        return "tableUsers";
     }
 
-    @ResponseBody
+
+
+    @PostMapping("/addUser")
+    public String addPage(User user){
+        System.out.println(user);
+        userMapper.addUser(user);
+        return "redirect:/queryUserList";
+    }
+
     @GetMapping("/addUser")
-    public String addUser(){
-        userMapper.addUser(new User(2, "xiaoming", "1234"));
-        return "ok";
+    public String toAddpage(){
+        return "addUser";
     }
 
-    @ResponseBody
-    @GetMapping("/updateUser")
-    public String updateUser(){
-        userMapper.updateUser(new User(2, "xiaowang", "5678"));
-        return "ok";
-    }
+//    @ResponseBody
+//    @GetMapping("/updateUser")
+//    public String updateUser(){
+//        userMapper.updateUser(new User(2, "xiaowang", "5678"));
+//        return "ok";
+//    }
 
-    @ResponseBody
-    @GetMapping("/deleteUser")
-    public String deleteUser(){
-        userMapper.deleteUser(2);
-        return "ok";
+
+    @GetMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable("id")int id){
+        userMapper.deleteUser(id);
+        return "redirect:/queryUserList";
     }
 
 }

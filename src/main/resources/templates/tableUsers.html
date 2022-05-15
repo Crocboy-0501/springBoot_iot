@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>用户表</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -44,7 +44,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                <h1 class="h3 mb-2 text-gray-800">用户表</h1>
                 <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                     For more information about DataTables, please visit the <a target="_blank"
                                                                                href="https://datatables.net">official DataTables documentation</a>.</p>
@@ -52,46 +52,37 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-<!--                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
-
-                        <a class="btn btn-primary" th:href="@{/ToolsController/folderToZip}">Export Pictures</a>
-
-
+                        <!--                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
+                        <h6> <a class="btn btn-sm btn-success" th:href="@{/addUser}">添加用户</a></h6>
 
                     </div>
                     <div class="card-body">
-
-
-
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>时间</th>
-                                    <th>温度</th>
-                                    <th>湿度</th>
-                                    <th>光照</th>
-                                    <th>pm2.5</th>
-                                    <th>pm10</th>
-                                    <th>风向</th>
-                                    <th>风速</th>
+                                    <th>用户名</th>
+                                    <th>密码</th>
+                                    <th>权限</th>
+                                    <th>操作</th>
 
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                                <tr th:each="imp:${Imps}">
-                                    <td th:text="${imp.getId()}"></td>
-                                    <td th:text="${#dates.format(imp.getDatetime, 'yyyy-MM-dd')}"></td>
-                                    <td th:text="${imp.getTemp()}"></td>
-                                    <td th:text="${imp.getHum()}"></td>
-                                    <td th:text="${imp.getLux()}"></td>
-                                    <td th:text="${imp.getPm25()}"></td>
-                                    <td th:text="${imp.getPm10()}"></td>
-                                    <td th:text="${imp.getWindD()}"></td>
-                                    <td th:text="${imp.getWindV()}"></td>
+                                <tr th:each="emp:${emps}">
+                                    <td th:text="${emp.getId()}"></td>
+                                    <td th:text="${emp.getName()}"></td>
+                                    <td th:text="${emp.getPsw()}"></td>
+                                    <td th:text="${emp.getPrivilege()}"></td>
+                                    <td>
 
+
+                                        <button class="btn btn-sm btn-primary">编辑</button>
+                                        <a class="btn btn-sm btn-danger" th:href="@{/deleteUser/}+${emp.getId()}">删除</a>
+                                        <!--                                                <button type="button" class="btn btn-info"></button>-->
+                                    </td>
                                 </tr>
 
                                 </tbody>
@@ -121,7 +112,6 @@
 
 <div th:replace="~{commons/commons::logout}"></div>
 
-
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -140,16 +130,6 @@
 <script src="js/demo/datatables-demo.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.js"></script>
 
-<script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable( {
-            dom: 'Bfrtip',
-            buttons: [
-                'excel', 'print'
-            ]
-        } );
-    } );
-</script>
 
 </body>
 
