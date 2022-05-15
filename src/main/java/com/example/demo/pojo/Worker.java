@@ -13,7 +13,7 @@ import java.util.Date;
 public class Worker {
     private int id;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date data;
+    private Date date;
     private String status;
     private String battery;
     private String location;

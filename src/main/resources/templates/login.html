@@ -42,7 +42,7 @@
                                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     <p style="color:red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
                                 </div>
-                                <form class="user" th:action="@{/user/login}">
+                                <form class="user" th:action="@{/toLogin}" method="post">
                                     <div class="form-group">
                                         <input type="text" name="userName" class="form-control form-control-user"
                                                id="exampleInputUserName"
@@ -55,7 +55,7 @@
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
                                             <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            <label class="custom-control-label" for="customCheck">Remember
+                                            <label class="custom-control-label" for="customCheck" name="remember">Remember
                                                 Me</label>
                                         </div>
                                     </div>

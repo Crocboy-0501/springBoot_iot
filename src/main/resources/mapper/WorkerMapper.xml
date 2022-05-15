@@ -12,7 +12,7 @@
     </select>
 
     <insert id="addWorker" parameterType="Worker">
-        insert into workers (id, data, status, battery, location) values (#{id}, #{data}, #{status}, #{battery}, #{location})
+        insert into workers (id, date, status, battery, location) values (#{id}, #{date}, #{status}, #{battery}, #{location})
     </insert>
 
     <update id="updateWorker" parameterType="Worker">
